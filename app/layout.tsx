@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'AI Travel Planner - Plan Your Perfect Adventure',
+  title: 'WanderWise - Plan Your Perfect Adventure',
   description: 'Create personalized travel itineraries with AI-powered recommendations tailored to your budget, preferences, and timeline.',
 };
 
