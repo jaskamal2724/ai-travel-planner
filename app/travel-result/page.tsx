@@ -17,6 +17,7 @@ export default function TravelResultPage({ searchParams }: PageProps) {
   try {
     parsedData = JSON.parse(searchParams.data);
   } catch (err) {
+    console.log(err)
     redirect("/"); // Handle invalid JSON by redirecting
   }
 
