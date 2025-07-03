@@ -211,7 +211,7 @@ export function TravelResults({ result }: { result: TravelResultData }) {
               Your Personalized Itinerary
             </h2>
 
-            {mockTravelData.itinerary.map((day: any, index: number) => (
+            {mockTravelData.itinerary.map((day: ItineraryDay, index: number) => (
               <Card
                 key={index}
                 className="bg-white/80 backdrop-blur-md border-white/20 shadow-lg"
