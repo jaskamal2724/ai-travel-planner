@@ -280,7 +280,7 @@ export default function MarketingPage() {
               What Our Travelers Say
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Join thousands of satisfied travelers who've discovered their perfect trips
+              Join thousands of satisfied travelers who&apos;ve discovered their perfect trips
             </p>
           </div>
 
@@ -293,7 +293,7 @@ export default function MarketingPage() {
                       <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <p className="text-gray-700 mb-6 italic">"{testimonial.content}"</p>
+                  <p className="text-gray-700 mb-6 italic">&quot;{testimonial.content}&quot;</p>
                   <div className="flex items-center">
                     <img 
                       src={testimonial.image} 
@@ -320,7 +320,7 @@ export default function MarketingPage() {
             Ready to Plan Your Next Adventure?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Join over 50,000 travelers who've discovered their perfect trips with our AI planner
+            Join over 50,000 travelers who&apos;ve discovered their perfect trips with our AI planner
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
@@ -355,7 +355,7 @@ export default function MarketingPage() {
                 <span className="text-xl font-bold">WanderWise ✈️</span>
               </div>
               <p className="text-gray-400 mb-4">
-                The world's most advanced AI-powered travel planning platform.
+                The world&apos;s most advanced AI-powered travel planning platform.
               </p>
               <div className="flex space-x-4">
                 <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white">

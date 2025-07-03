@@ -59,7 +59,6 @@ export function InstagramSpots({ spots}: InstagramSpotsProps) {
     fetchImages();
   }, []);
 
-  let combined:InstaSpots[]=[];
 
   useEffect(() => {
   if (images.length === 0) return;
@@ -316,7 +315,7 @@ export function InstagramSpots({ spots}: InstagramSpotsProps) {
             </h4>
             <p className="text-sm text-gray-600">
               Visit during golden hour (1 hour before sunset) for the best
-              lighting. Don't forget to check the weather and arrive early to
+              lighting. Don&apos;t forget to check the weather and arrive early to
               avoid crowds!
             </p>
           </div>

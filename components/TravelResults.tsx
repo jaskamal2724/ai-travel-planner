@@ -134,7 +134,6 @@ export function TravelResults({ result }: { result: TravelResultData }) {
 
   const mockTravelData = result;
   
-  const spots = result.instagram_worthy_spots.map((s) => s.name);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
@@ -339,7 +338,7 @@ export function TravelResults({ result }: { result: TravelResultData }) {
                 </p>
               </CardHeader>
               <CardContent className="space-y-4">
-                {mockTravelData.alternatives.map((alt: any, index: number) => (
+                {mockTravelData.alternatives.map((alt: AlternativeCity, index: number) => (
                   <div key={index} className="p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center space-x-2 mb-1">
                       <MapPin className="h-4 w-4 text-blue-500" />

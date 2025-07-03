@@ -18,7 +18,6 @@ export function PlanningForm() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [selectedTripType, setSelectedTripType] = useState("leisure");
 
-  const [loading, setloading] = useState(false);
 
   const tripTypes = [
     { id: "leisure", label: "Leisure", icon: "🏖️" },
@@ -62,6 +61,7 @@ export function PlanningForm() {
     } 
     catch (error) {
       setIsGenerating(false);
+      console.log(error)
     }
   };
 
