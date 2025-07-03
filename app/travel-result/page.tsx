@@ -1,56 +1,24 @@
-"use client";
 
-import { useState, useEffect } from "react";
-import { TravelResults } from "@/components/TravelResults";
-import Loader from "@/components/Loader";
+import { redirect } from "next/navigation";
+import { TravelResult } from "./TravelResult";
 
-export interface TravelResultProps {
-  destination: string;
-  people: string;
-  days: string;
-  selectedTripType: string;
+interface PageProps {
+  searchParams: {
+    data?: string;
+  };
 }
 
-export const TravelResult = ({
-  destination,
-  people,
-  days,
-  selectedTripType,
-}: TravelResultProps) => {
-  const [result, setResult] = useState(null);
-  const [error, setError] = useState("");
+export default function TravelResultPage({ searchParams }: PageProps) {
+  if (!searchParams.data) {
+    redirect("/");
+  }
 
-  useEffect(() => {
-    if (result) return;
+  let parsedData;
+  try {
+    parsedData = JSON.parse(searchParams.data);
+  } catch (err) {
+    redirect("/"); // Handle invalid JSON by redirecting
+  }
 
-    const fetchData = async () => {
-      const payload = { destination, people, days, selectedTripType };
-
-      try {
-        const response = await fetch("/api/openai", {
-          method: "POST",
-          body: JSON.stringify(payload),
-          headers: { "Content-Type": "application/json" },
-        });
-
-        if (!response.ok) {
-          throw new Error(`API call failed with status ${response.status}`);
-        }
-
-        const resultData = await response.json();
-        setResult(resultData);
-      } catch (err) {
-        console.error(err);
-        setError(err as string);
-      }
-    };
-
-    fetchData();
-  }, [destination, people, days, selectedTripType]);
-
-  if (error) return <div>Error: {error}</div>;
-  if (!result) return <Loader />;
-
-  return <TravelResults result={result} />;
-};
-
+  return <TravelResult {...parsedData} />;
+}
