@@ -7,9 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Calendar, Sparkles, Loader2, IndianRupee, User2 } from "lucide-react";
+import { MapPin, Calendar, Sparkles, Loader2, User2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import Loader from "./Loader";
 
 export function PlanningForm() {
   const router = useRouter();

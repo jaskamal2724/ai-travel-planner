@@ -1,86 +1,86 @@
 import { NextRequest, NextResponse } from "next/server";
-import OpenAI from "openai";
+// import OpenAI from "openai";
 import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// const client = new OpenAI({
+//   apiKey: process.env.OPENAI_API_KEY,
+// });
 
 
-const example = {
-  destination: "Manali, Himachal Pradesh",
-  days: 5,
-  budget: 50000,
-  tripType: "adventure",
-  itinerary: [
-    {
-      day: 1,
-      title: "Arrival & Local Exploration",
-      budget: 8000,
-      activities: [
-        "Check-in at hotel",
-        "Visit Hadimba Temple",
-        "Explore Mall Road"
-      ]
-    },
-    {
-      day: 2,
-      title: "Solang Valley Adventure",
-      budget: 12000,
-      activities: [
-        "Drive to Solang Valley",
-        "Paragliding & Ziplining",
-        "Visit Anjani Mahadev"
-      ]
-    },
-    {
-      day: 3,
-      title: "Rohtang Pass Excursion",
-      budget: 11000,
-      activities: [
-        "Early morning trip to Rohtang Pass",
-        "Snow activities & photography",
-        "Back to hotel & relax"
-      ]
-    },
-    {
-      day: 4,
-      title: "Cultural & Scenic Sights",
-      budget: 9000,
-      activities: [
-        "Naggar Castle visit",
-        "River rafting in Beas River",
-        "Try local Himachali cuisine"
-      ]
-    },
-    {
-      day: 5,
-      title: "Departure",
-      budget: 1000,
-      activities: [
-        "Check-out from hotel",
-        "Last-minute shopping",
-        "Drive back to Chandigarh"
-      ]
-    }
-  ],
-  alternatives: [
-    {
-      city: "Kasol",
-      reason: "Perfect for nature lovers and peaceful getaways"
-    },
-    {
-      city: "Dharamshala",
-      reason: "Great blend of Tibetan culture and scenic views"
-    },
-    {
-      city: "Rishikesh",
-      reason: "Adventure-packed and spiritually enriching"
-    }
-  ]
-}
+// const example = {
+//   destination: "Manali, Himachal Pradesh",
+//   days: 5,
+//   budget: 50000,
+//   tripType: "adventure",
+//   itinerary: [
+//     {
+//       day: 1,
+//       title: "Arrival & Local Exploration",
+//       budget: 8000,
+//       activities: [
+//         "Check-in at hotel",
+//         "Visit Hadimba Temple",
+//         "Explore Mall Road"
+//       ]
+//     },
+//     {
+//       day: 2,
+//       title: "Solang Valley Adventure",
+//       budget: 12000,
+//       activities: [
+//         "Drive to Solang Valley",
+//         "Paragliding & Ziplining",
+//         "Visit Anjani Mahadev"
+//       ]
+//     },
+//     {
+//       day: 3,
+//       title: "Rohtang Pass Excursion",
+//       budget: 11000,
+//       activities: [
+//         "Early morning trip to Rohtang Pass",
+//         "Snow activities & photography",
+//         "Back to hotel & relax"
+//       ]
+//     },
+//     {
+//       day: 4,
+//       title: "Cultural & Scenic Sights",
+//       budget: 9000,
+//       activities: [
+//         "Naggar Castle visit",
+//         "River rafting in Beas River",
+//         "Try local Himachali cuisine"
+//       ]
+//     },
+//     {
+//       day: 5,
+//       title: "Departure",
+//       budget: 1000,
+//       activities: [
+//         "Check-out from hotel",
+//         "Last-minute shopping",
+//         "Drive back to Chandigarh"
+//       ]
+//     }
+//   ],
+//   alternatives: [
+//     {
+//       city: "Kasol",
+//       reason: "Perfect for nature lovers and peaceful getaways"
+//     },
+//     {
+//       city: "Dharamshala",
+//       reason: "Great blend of Tibetan culture and scenic views"
+//     },
+//     {
+//       city: "Rishikesh",
+//       reason: "Adventure-packed and spiritually enriching"
+//     }
+//   ]
+// }
 
 export async function POST(req: NextRequest) {
   const body = await req.json();

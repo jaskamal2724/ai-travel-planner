@@ -6,9 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { 
-  Plane, 
   MapPin, 
-  Calendar, 
   DollarSign, 
   Sparkles, 
   Star,
@@ -22,7 +20,6 @@ import {
   Play,
   CheckCircle,
   Award,
-  TrendingUp,
   MessageSquare
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
