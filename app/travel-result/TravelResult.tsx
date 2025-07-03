@@ -11,7 +11,7 @@ export interface TravelResultProps {
   selectedTripType: string;
 }
 
-export const TravelResult = ({
+const  TravelResult = ({
   destination,
   people,
   days,
@@ -53,4 +53,6 @@ export const TravelResult = ({
 
   return <TravelResults result={result} />;
 };
+
+export default TravelResult;
 

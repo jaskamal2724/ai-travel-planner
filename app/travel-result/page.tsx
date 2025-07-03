@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation";
-import { TravelResult } from "./TravelResult";
+import  TravelResult  from "./TravelResult";
 
 export default function TravelResultPage({
   searchParams,
 }: {
-  searchParams?: { data?: string };
+  searchParams: { data: string };
 }) {
   if (!searchParams?.data) {
     redirect("/");
