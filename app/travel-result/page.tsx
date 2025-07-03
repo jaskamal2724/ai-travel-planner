@@ -4,14 +4,14 @@ import { useState, useEffect } from "react";
 import { TravelResults } from "@/components/TravelResults";
 import Loader from "@/components/Loader";
 
-interface TravelResultProps {
+export interface TravelResultProps {
   destination: string;
   people: string;
   days: string;
   selectedTripType: string;
 }
 
-const TravelResult = ({
+export const TravelResult = ({
   destination,
   people,
   days,
@@ -54,4 +54,3 @@ const TravelResult = ({
   return <TravelResults result={result} />;
 };
 
-export default TravelResult;
