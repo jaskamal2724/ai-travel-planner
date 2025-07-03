@@ -1,33 +1,35 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { TravelResults } from "@/components/TravelResults";
 import { useState, useEffect } from "react";
+import { TravelResults } from "@/components/TravelResults";
 import Loader from "@/components/Loader";
 
-const TravelResult = () => {
-  const searchParams = useSearchParams();
-  const dataParam = searchParams.get("data");
-  const [result, setResult] = useState(null);
-  const [error, setError] = useState("")
+interface TravelResultProps {
+  destination: string;
+  people: string;
+  days: string;
+  selectedTripType: string;
+}
+
+const TravelResult = ({
+  destination,
+  people,
+  days,
+  selectedTripType,
+}: TravelResultProps) => {
+  const [result, setResult] = useState<any>(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    if(result) return
-    
+    if (result) return;
+
     const fetchData = async () => {
+      const payload = { destination, people, days, selectedTripType };
+
       try {
-        // Parse the JSON string from query
-        const data = dataParam ? JSON.parse(dataParam) : null;
-
-        if (!data) {
-          console.log("No data provided")
-          setError("no data provided")
-          return;
-        }
-
         const response = await fetch("/api/openai", {
           method: "POST",
-          body: JSON.stringify(data),
+          body: JSON.stringify(payload),
           headers: { "Content-Type": "application/json" },
         });
 
@@ -37,31 +39,19 @@ const TravelResult = () => {
 
         const resultData = await response.json();
         setResult(resultData);
-      } 
-      catch (err) {
-        setError(err as string)
-        console.log(err)
+      } catch (err: any) {
+        console.error(err);
+        setError(err.message || "Something went wrong");
       }
     };
 
     fetchData();
-  }, []); // Empty dependency array ensures this runs only once on mount
+  }, [destination, people, days, selectedTripType]);
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!result) {
-    return(
-      <div>
-        <Loader/>
-      </div>
-    );
-  }
+  if (error) return <div>Error: {error}</div>;
+  if (!result) return <Loader />;
 
   return <TravelResults result={result} />;
 };
 
 export default TravelResult;
-
-

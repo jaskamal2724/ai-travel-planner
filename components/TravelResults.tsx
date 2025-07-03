@@ -134,7 +134,6 @@ export function TravelResults({ result }: { result: TravelResultData }) {
 
   const mockTravelData = result;
   
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8">
