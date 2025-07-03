@@ -1,20 +1,22 @@
 import { redirect } from "next/navigation";
-import  TravelResult  from "./TravelResult";
+import TravelResult from "./TravelResult";
 
-export default function TravelResultPage({
+export default async function TravelResultPage({
   searchParams,
 }: {
-  searchParams: { data: string };
+  searchParams: Promise<{ data?: string }>;
 }) {
-  if (!searchParams?.data) {
+  const resolvedSearchParams = await searchParams;
+
+  if (!resolvedSearchParams?.data) {
     redirect("/");
   }
 
   let parsedData;
   try {
-    parsedData = JSON.parse(searchParams.data);
-  } catch(error){
-    console.log(error)
+    parsedData = JSON.parse(resolvedSearchParams.data);
+  } catch (error) {
+    console.log(error);
     redirect("/");
   }
 
