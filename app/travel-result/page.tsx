@@ -17,7 +17,7 @@ const TravelResult = ({
   days,
   selectedTripType,
 }: TravelResultProps) => {
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -39,9 +39,9 @@ const TravelResult = ({
 
         const resultData = await response.json();
         setResult(resultData);
-      } catch (err: any) {
+      } catch (err) {
         console.error(err);
-        setError(err.message || "Something went wrong");
+        setError(err as string);
       }
     };
 
