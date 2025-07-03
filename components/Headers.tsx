@@ -3,6 +3,7 @@
 import { Plane, User, Search, Bell } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { SignedIn, UserButton } from '@clerk/nextjs';
 
 export function Header() {
   return (
@@ -31,7 +32,10 @@ export function Header() {
               <Bell className="h-5 w-5" />
             </Button>
             <Button variant="ghost" size="icon" className="hover:bg-white/60">
-              <User className="h-5 w-5" />
+              {/* <User className="h-5 w-5" /> */}
+              <SignedIn>
+                <UserButton/>
+              </SignedIn>
             </Button>
           </div>
         </div>

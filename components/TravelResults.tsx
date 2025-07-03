@@ -16,10 +16,10 @@ import {
   CheckCircle,
   IndianRupee,
 } from "lucide-react";
-import React from "react";
-import { userInfo } from "os";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { InstagramSpots } from "./InstagramSpots";
+import axios from "axios";
 
 const data = {
   destination: "Manali, Himachal Pradesh",
@@ -94,19 +94,30 @@ const data = {
   ],
 };
 
-export interface ItineraryDay {
+interface ItineraryDay {
   day: number;
   title: string;
   budget: number;
   activities: string[];
 }
 
-export interface AlternativeCity {
+interface AlternativeCity {
   city: string;
   reason: string;
 }
 
-export interface TravelResultData {
+interface InstaSpots {
+  name: string;
+  description: string;
+  best_time: string;
+  difficulty: string;
+  tags: string;
+  likes: string;
+  category: string;
+  image:string;
+}
+
+interface TravelResultData {
   destination: string;
   days: number;
   budget: number;
@@ -116,12 +127,15 @@ export interface TravelResultData {
   best_time_to_visit_destination: string;
   best_time_to_book_flights: string;
   people: string;
+  instagram_worthy_spots: InstaSpots[];
 }
 
 export function TravelResults({ result }: { result: TravelResultData }) {
   const router = useRouter();
 
   const mockTravelData = result;
+  
+  const spots = result.instagram_worthy_spots.map((s) => s.name);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
@@ -130,7 +144,7 @@ export function TravelResults({ result }: { result: TravelResultData }) {
         <div className="flex items-center justify-between mb-8">
           <Button
             variant="ghost"
-            className="flex items-center space-x-2 hover:bg-white/60"
+            className="cursor-pointer flex items-center space-x-2 hover:bg-white/60"
           >
             <ArrowLeft className="h-4 w-4" />
             <span onClick={() => router.push("/dashboard")}>
@@ -345,7 +359,9 @@ export function TravelResults({ result }: { result: TravelResultData }) {
         {/* Instagram Spots Section */}
         <Card className="mt-10 bg-white/80 backdrop-blur-md border-white/20 shadow-lg">
           <CardContent className="p-6">
-            <InstagramSpots destination={data.destination} />
+            <InstagramSpots
+              spots={result.instagram_worthy_spots}
+            />
           </CardContent>
         </Card>
       </div>

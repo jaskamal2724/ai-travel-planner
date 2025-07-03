@@ -143,26 +143,28 @@ export async function POST(req: NextRequest) {
   Generate a travel plan now.
   `;
 
-  const completion = await client.chat.completions.create({
-    model: "gpt-4o",
-    messages: [{ role: "system", content: system_prompt }],
-  });
-
-  const content = completion.choices[0].message.content || "";
-  const jsonString = content.replace(/```json|```/g, "").trim();
-
-  // const response = await ai.models.generateContent({
-  //   model: "gemini-2.5-flash",
-  //   contents: system_prompt,
-  //   config: {
-  //     thinkingConfig: {
-  //       thinkingBudget: 0,
-  //     },
-  //   }
+  // const completion = await client.chat.completions.create({
+  //   model: "gpt-4o",
+  //   messages: [{ role: "system", content: system_prompt }],
   // });
 
+  // const content = completion.choices[0].message.content || "";
+  // const jsonString = content.replace(/```json|```/g, "").trim();
+
+  const response = await ai.models.generateContent({
+    model: "gemini-2.5-flash",
+    contents: system_prompt,
+    config: {
+      thinkingConfig: {
+        thinkingBudget: 1,
+      },
+    }
+  });
+
+  const text = response.text;
+
   try {
-    const parsed = JSON.parse(jsonString);
+    const parsed = JSON.parse(text!);
     return NextResponse.json(parsed, { status: 200 });
   } catch (e) {
     console.error("Failed to parse JSON", e);

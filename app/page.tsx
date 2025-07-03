@@ -25,8 +25,11 @@ import {
   TrendingUp,
   MessageSquare
 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function MarketingPage() {
+
+  const router = useRouter();
   const [email, setEmail] = useState('');
 
   const features = [
@@ -114,11 +117,9 @@ export default function MarketingPage() {
             </div>
 
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" className="text-gray-600">
-                Sign In
-              </Button>
+              
               <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                Get Started Free
+                Get Started
               </Button>
             </div>
           </div>
@@ -159,16 +160,17 @@ export default function MarketingPage() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Button 
+              onClick={()=>router.push("/dashboard")}
               size="lg" 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-lg px-8 py-4 h-auto"
+              className="cursor-pointer bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-lg px-8 py-4 h-auto"
             >
               <Sparkles className="mr-2 h-5 w-5" />
-              Start Planning Free
+              Start Planning
             </Button>
             <Button 
               variant="outline" 
               size="lg" 
-              className="text-lg px-8 py-4 h-auto bg-white/80 backdrop-blur-sm border-white/20"
+              className="cursor-pointer text-lg px-8 py-4 h-auto bg-white/80 backdrop-blur-sm border-white/20"
             >
               <Play className="mr-2 h-5 w-5" />
               Watch Demo

@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
   const destination = searchParams.get('destination') || 'Japan';
 
   try {
-    const response = await client.photos.search({ query: destination, per_page: 2 });
+    const response = await client.photos.search({ query: destination, per_page: 1 });
 
     // ✅ Narrow the type safely
     if ('error' in response) {
