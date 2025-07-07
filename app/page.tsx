@@ -146,16 +146,16 @@ export default function MarketingPage() {
                 >
                   Reviews
                 </a>
-                <a
+                {/* <a
                   href="#pricing"
                   className="text-gray-600 hover:text-blue-600 transition-colors"
                 >
                   Pricing
-                </a>
+                </a> */}
               </div>
 
               <div className="flex items-center space-x-4">
-                <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                <Button onClick={() => router.push("/dashboard")} className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
                   Get Started
                 </Button>
               </div>
