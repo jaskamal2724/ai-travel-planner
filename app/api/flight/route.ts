@@ -47,7 +47,9 @@ Only respond with a valid, clean JSON object — no markdown, no backticks, no e
     let parsed;
     try {
       parsed = JSON.parse(result);
-    } catch (err) {
+    } 
+    catch (err) {
+      console.log(err)
       return NextResponse.json(
         { error: "Failed to parse OpenAI response as JSON.", raw: result },
         { status: 500 }
@@ -57,7 +59,7 @@ Only respond with a valid, clean JSON object — no markdown, no backticks, no e
     return NextResponse.json(parsed, { status: 200 });
   } catch (error) {
     return NextResponse.json(
-      { error: "Unexpected server error", details: (error as any).message },
+      { error: "Unexpected server error", details:error },
       { status: 500 }
     );
   }
